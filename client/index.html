@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter streamer</title>
+    <script type="text/javascript" src="./socket.js"></script>
+    <script type="text/javascript" src="./map.js"></script>
+</head>
+<body>
+    <h1>Twitter streamer</h1>
+
+    <form name="publish" id="publish" onsubmit="return go_stream(this);">
+        <label for="track">Поисковый запрос: </label>
+        <input id="track" type="text" name="track" />
+
+        <br/>
+
+        <label for="lang">Язык: </label>
+        <select id="lang" name="lang">
+            <option value="" selected="selected">Любой язык</option>
+            <option value="am">амхарский (አማርኛ)</option>
+            <option value="en">английский (English)</option>
+            <option value="ar">арабский (العربية)</option>
+            <option value="hy">армянский (հայերեն)</option>
+            <option value="bn">бенгальский (বাংলা)</option>
+            <option value="my">бирманский (ဗမာ)</option>
+            <option value="bg">болгарский (български)</option>
+            <option value="hu">венгерский (magyar)</option>
+            <option value="vi">вьетнамский (Tiếng Việt)</option>
+            <option value="ht">гаитянский (Haitian Creole)</option>
+            <option value="el">греческий (Ελληνικά)</option>
+            <option value="ka">грузинский (ქართული)</option>
+            <option value="gu">гуджарати (ગુજરાતી)</option>
+            <option value="da">датский (dansk)</option>
+            <option value="he">иврит (עברית)</option>
+            <option value="id">индонезийский (Indonesia)</option>
+            <option value="is">исландский (íslenska)</option>
+            <option value="es">испанский (español)</option>
+            <option value="it">итальянский (italiano)</option>
+            <option value="kn">каннада (ಕನ್ನಡ)</option>
+            <option value="zh">китайский (中文)</option>
+            <option value="ko">корейский (한국어)</option>
+            <option value="km">кхмерский (ខ្មែរ)</option>
+            <option value="lo">лаосский (ລາວ)</option>
+            <option value="lv">латышский (latviešu)</option>
+            <option value="lt">литовский (lietuvių)</option>
+            <option value="ml">малаялам (മലയാളം)</option>
+            <option value="dv">мальдивский (Divehi)</option>
+            <option value="mr">маратхи (मराठी)</option>
+            <option value="de">немецкий (Deutsch)</option>
+            <option value="ne">непальский (नेपाली)</option>
+            <option value="nl">нидерландский (Nederlands)</option>
+            <option value="no">норвежский (norsk)</option>
+            <option value="or">ория (ଓଡ଼ିଆ)</option>
+            <option value="pa">панджаби (ਪੰਜਾਬੀ)</option>
+            <option value="fa">персидский (فارسی)</option>
+            <option value="pl">польский (polski)</option>
+            <option value="pt">португальский (português)</option>
+            <option value="ps">пушту (پښتو)</option>
+            <option value="ro">румынский (română)</option>
+            <option value="ru">русский (русский)</option>
+            <option value="sr">сербский (српски)</option>
+            <option value="si">сингальский (සිංහල)</option>
+            <option value="sd">синдхи (سنڌي)</option>
+            <option value="sl">словенский (slovenščina)</option>
+            <option value="ckb">сорани курдский (کوردیی ناوەندی)</option>
+            <option value="tl">тагалог (Tagalog)</option>
+            <option value="th">тайский (ไทย)</option>
+            <option value="ta">тамильский (தமிழ்)</option>
+            <option value="te">телугу (తెలుగు)</option>
+            <option value="bo">тибетский (བོད་སྐད་)</option>
+            <option value="tr">турецкий (Türkçe)</option>
+            <option value="ug">уйгурский (ئۇيغۇرچە)</option>
+            <option value="ur">урду (اردو)</option>
+            <option value="fi">финский (suomi)</option>
+            <option value="fr">французский (français)</option>
+            <option value="hi">хинди (हिन्दी)</option>
+            <option value="sv">шведский (svenska)</option>
+            <option value="et">эстонский (eesti)</option>
+            <option value="ja">японский (日本語)</option>
+        </select>
+
+        <br/>
+
+        <label>Координаты: </label>
+        <input name="sw_lng" id="sw_lng" value="">
+        <input name="sw_lat" id="sw_lat" value="">
+        <input name="ne_lng" id="ne_lng" value="">
+        <input name="ne_lat" id="ne_lat" value="">
+
+        <div id="map" style="width: 400px; height: 300px; "></div>
+        <input type="submit" name="go" value="Go stream!">
+    </form>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2whkiSXKlMERslDDro6h3C0MeIuGSbMo&callback=initMap">
+    </script>
+
+    <table id="subscribe"></table>
+</body>
+</html>
